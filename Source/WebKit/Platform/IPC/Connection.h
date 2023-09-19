@@ -65,8 +65,6 @@
 #include <Messenger.h>
 #include <String.h>
 
-#include <wtf/haiku/ConnectionHandle.h>
-
 #include <WebCore/NotImplemented.h>
 #endif
 
@@ -298,10 +296,10 @@ public:
         OSObjectPtr<xpc_connection_t> xpcConnection;
 #elif OS(HAIKU)
         explicit Identifier(Handle&& handle)
-             : handle(handle)
+             : handle(handle.handle())
         {
         }
-        Handle handle;
+        BMessenger handle;
         bool m_isCreatedFromMessage { false };
 
         operator bool() const { return handle.IsValid(); }
