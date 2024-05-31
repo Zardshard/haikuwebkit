@@ -61,7 +61,7 @@ public:
     virtual FloatRect visibleContentsRect() const = 0;
     virtual void detachLayer(CoordinatedGraphicsLayer*) = 0;
     virtual void attachLayer(CoordinatedGraphicsLayer*) = 0;
-#if USE(CAIRO)
+#if USE(CAIRO) || PLATFORM(HAIKU)
     virtual Nicosia::PaintingEngine& paintingEngine() = 0;
 #elif USE(SKIA)
     virtual BitmapTexturePool* skiaAcceleratedBitmapTexturePool() const = 0;
