@@ -26,24 +26,24 @@
 
 #include "PageClient.h"
 
+#include "DefaultUndoController.h"
 #include "WebDateTimePicker.h"
 #include "WebPageProxy.h"
-#include "DefaultUndoController.h"
 
 #include <WebCore/IntPoint.h>
 #include <WebCore/IntRect.h>
 
 namespace WebKit {
 
-class WebViewBase;
 class DrawingAreaProxy;
-class PageClientImpl: public PageClient
-{
+class WebViewBase;
+
+class PageClientImpl: public PageClient {
 public:
     PageClientImpl(WebViewBase&);
     WebViewBase* viewWidget();
 private:
-    //page client def's
+    // page client def's
     std::unique_ptr<DrawingAreaProxy> createDrawingAreaProxy(WebKit::WebProcessProxy&) override;
     void setViewNeedsDisplay(const WebCore::Region&) override;
     void requestScroll(const WebCore::FloatPoint& scrollPosition, const WebCore::IntPoint& scrollOrigin, WebCore::ScrollIsAnimated) override;
@@ -82,8 +82,8 @@ private:
 #endif
 
 #if ENABLE(INPUT_TYPE_COLOR)
-    RefPtr<WebColorPicker> createColorPicker(WebPageProxy*, const WebCore::Color& intialColor, 
-            const WebCore::IntRect&,Vector<WebCore::Color>&&) override;
+    RefPtr<WebColorPicker> createColorPicker(WebPageProxy*, const WebCore::Color& intialColor,
+        const WebCore::IntRect&, Vector<WebCore::Color>&&) override;
 #endif
 
     void enterAcceleratedCompositingMode(const LayerTreeContext&) override;
